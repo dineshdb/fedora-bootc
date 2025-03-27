@@ -1,0 +1,15 @@
+[Unit]
+Description=Run a demo webserver
+
+[Container]
+PodmanArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+# This image happens to be multiarch and somewhat maintained. Note
+# that we also pin by (hopefully immutable) tag.
+Image=docker.io/library/caddy:2.8.4
+PublishPort=80:80
+# This is just a generally good practice
+ReadOnly=true
+
+[Install]
+WantedBy=default.target
+
